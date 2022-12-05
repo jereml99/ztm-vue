@@ -1,15 +1,21 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <login-component></login-component>
+  <add-stop user-i-d="6"></add-stop>
+  <bus-stops user-i-d="6" />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import BusStops from './components/BusStopList.vue'
+import AddStop from "@/components/AddStop.vue";
+import LoginComponent from "@/components/LoginComponent.vue";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    LoginComponent,
+    AddStop,
+    BusStops: BusStops
   }
 }
 </script>
