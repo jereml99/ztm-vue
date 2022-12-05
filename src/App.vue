@@ -1,8 +1,9 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <login-component></login-component>
-  <add-stop user-i-d="6"></add-stop>
-  <bus-stops user-i-d="6" />
+  <login-component v-if="!userID" @user-logged="(id) => userID = id"></login-component>
+  <add-stop v-if="userID" :user-i-d="userID"></add-stop>
+  <bus-stops v-if="userID" :user-i-d="userID" />
+  <button v-if="userID" class="btn btn-danger" @click="logout">Wyloguj</button>
 </template>
 
 <script>
@@ -16,6 +17,17 @@ export default {
     LoginComponent,
     AddStop,
     BusStops: BusStops
+  },
+  data() {
+    return {
+      userID: ""
+    };
+  },
+
+  methods: {
+    logout: function () {
+      this.userID = "";
+    }
   }
 }
 </script>

@@ -1,20 +1,23 @@
 <template>
-  <table class="table-responsive-lg">
-    <thead>
+  <div class="d-flex">
+    <table class="table-bordered" >
+      <thead>
       <tr>
         <th>Linia</th>
-        <th>Kierunek</th>>
-        <th>Szacowany czas przyjazdu</th>
+        <th>Kierunek</th>
+        <th>czas</th>
       </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
       <tr v-for="vehicle in vehicles" :key="vehicle.id">
         <td>{{vehicle.line}}</td>
         <td>{{vehicle.heading}}</td>
         <td>{{vehicle.estimatedTime}}</td>
       </tr>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
+
 </template>
 
 <script>

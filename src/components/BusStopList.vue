@@ -1,8 +1,9 @@
 <template>
-  <div class="hello">
-    <div v-for="stopId in stopsIDs" :key="stopId">
+  <div class="d-flex">
+    <div v-for="stopId in stopsIDs" :key="stopId" class="d-flex m-auto">
       <stop-table :stop-id="stopId"></stop-table>
       <button class="btn btn-danger" @click="removeStop(stopId)">Usuń</button>
+
     </div>
   </div>
 
@@ -27,7 +28,7 @@ export default {
     getStops: function () {
       fetch(`http://127.0.0.1:4000/listuserbusstops/${this.userID}`)
           .then(response => response.json())
-          .then(data => this.stopsIDs = data.stops);
+          .then(data => {this.stopsIDs = data.stops; console.log(data)});
     },
     removeStop: function (stopId) {
       fetch(`http://127.0.0.1:4000/deletebusstop?busStopId=${stopId}&userId=${this.userID}`, {method: 'DELETE'})
@@ -66,5 +67,9 @@ li {
 
 a {
   color: #42b983;
+}
+
+span {
+  display: flex;
 }
 </style>
