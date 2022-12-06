@@ -7,6 +7,7 @@ const emitter = mitt();
 
 const app = createApp(App)
 app.config.globalProperties.emitter = emitter;
+app.config.globalProperties.stops = [];
 app.mount('#app')
 
 import 'bootstrap-vue/dist/bootstrap-vue.css'

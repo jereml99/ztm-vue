@@ -1,6 +1,6 @@
 <template>
-  <div class="d-flex">
-    <div v-for="stopId in stopsIDs" :key="stopId" class="d-flex m-auto">
+  <div class="grid-container">
+    <div v-for="stopId in stopsIDs" :key="stopId" class="d-flex m-auto flex-wrap">
       <stop-table :stop-id="stopId"></stop-table>
       <button class="btn btn-danger" @click="removeStop(stopId)">Usuń</button>
 
@@ -51,6 +51,14 @@ export default {
 
 
 <style scoped>
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-row-gap: 20px;
+  padding: 10px;
+}
+
 h3 {
   margin: 40px 0 0;
 }
