@@ -2,6 +2,7 @@
   <div class="d-flex">
     <table class="table-bordered" >
       <thead>
+      <tr><th colspan="3">{{stopInfo.stopDesc}}</th></tr>
       <tr>
         <th>Linia</th>
         <th>Kierunek</th>
@@ -52,7 +53,8 @@ export default {
   },
 
   props: {
-    stopId: Number
+    stopId: String,
+    stopInfo: Object
   },
 }
 </script>

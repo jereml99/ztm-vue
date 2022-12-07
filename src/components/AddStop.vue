@@ -28,7 +28,8 @@
 export default {
   name: "AddStop",
   props: {
-    userID: String
+    userID: String,
+    stops: Array
   },
   emits: ["stop-added"],
   data() {
@@ -45,20 +46,11 @@ export default {
         if (resp.ok) {
           this.resultstopId = "";
           this.emitter.emit("stop-added");
-          window.alert("Dodano przystanek");
         }
       });
     },
-    getStops: function () {
-      fetch(`http://127.0.0.1:4000/busstops`)
-          .then(response => response.json())
-          .then(data => { console.log(data) ;this.stops = Object.values(data)[0].stops});
-    }
   },
 
-  created() {
-    this.getStops();
-  }
 }
 </script>
 

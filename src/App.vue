@@ -1,8 +1,8 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
   <login-component v-if="!userID" @user-logged="(id) => userID = id"></login-component>
-  <add-stop v-if="userID" :user-i-d="userID"></add-stop>
-  <bus-stops v-if="userID" :user-i-d="userID" />
+  <add-stop v-if="userID" :user-i-d="userID" :stops="stops"></add-stop>
+  <bus-stops v-if="userID" :user-i-d="userID" :stops="stops" />
   <button v-if="userID" class="btn btn-danger" @click="logout">Wyloguj</button>
 </template>
 
@@ -20,14 +20,24 @@ export default {
   },
   data() {
     return {
-      userID: ""
+      userID: "",
+      stops: []
     };
   },
 
   methods: {
     logout: function () {
       this.userID = "";
+    },
+    getStops: function () {
+      fetch(`http://127.0.0.1:4000/busstops`)
+          .then(response => response.json())
+          .then(data => { console.log(data) ;this.stops = Object.values(data)[0].stops});
     }
+  },
+
+  created() {
+    this.getStops();
   }
 }
 </script>

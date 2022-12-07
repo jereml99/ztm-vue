@@ -1,7 +1,7 @@
 <template>
   <div class="grid-container">
     <div v-for="stopId in stopsIDs" :key="stopId" class="d-flex m-auto flex-wrap">
-      <stop-table :stop-id="stopId"></stop-table>
+      <stop-table :stop-id="stopId" :stop-info="stops.find(stopInfo => stopInfo.stopId === stopId)"></stop-table>
       <button class="btn btn-danger" @click="removeStop(stopId)">Usuń</button>
 
     </div>
@@ -21,7 +21,8 @@ export default {
     };
   },
   props: {
-    userID: String
+    userID: String,
+    stops: Array
   },
 
   methods: {
